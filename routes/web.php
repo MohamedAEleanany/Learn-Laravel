@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Test1Controller;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +25,9 @@ Route::redirect('test2','/testview1');
 //{name?} ? this expain this in route can be exist or not 
 //Note => need to add Defult name in Method 
 Route::get('/test/name/{name?}/{age?}',[TestController::class , 'printName'])->name('test.view');
+
+
+Route::controller(Test1Controller::class)->group(function(){
+    Route::get('/testt1','test1');
+    Route::get('/testt2','test2');
+});
