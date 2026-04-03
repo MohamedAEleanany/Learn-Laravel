@@ -15,4 +15,9 @@ class TestController extends Controller
     {
         return view('test');
     }
+
+    public function printName($name = 'Defult' , $age = 18)
+    {
+        dd("Hello $name and your age is $age");
+    }
 }
