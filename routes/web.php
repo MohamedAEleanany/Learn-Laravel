@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\SingleController;
 use App\Http\Controllers\Test1Controller;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -27,7 +29,12 @@ Route::redirect('test2','/testview1');
 Route::get('/test/name/{name?}/{age?}',[TestController::class , 'printName'])->name('test.view');
 
 
-Route::controller(Test1Controller::class)->group(function(){
-    Route::get('/testt1','test1');
+Route::controller(Test1Controller::class)->prefix('/test')->name('test.')->group(function(){
+    Route::get('/testt1','test1')->name('index');
     Route::get('/testt2','test2');
 });
+
+
+Route::get('/testcon',[UserController::class,'index']);
+// Test singel Action Controller using the command : php artisan make:controller SingleController --invokable 
+Route::get('/test/singlecon',SingleController::class);

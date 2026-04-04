@@ -8,3 +8,5 @@
 <a href="{{ route('test.view',['name'=>'yasser']) }}"> using route function (test another way) </a>
 
 <a href="{{ route('test.view',['name'=>'yasser' ,'age'=> 21]) }}"> using route function (test two param) </a>
+
+<a href="{{ route('test.index') }}">Test route group </a>
