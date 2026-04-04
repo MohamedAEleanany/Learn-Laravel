@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\SingleController;
 use App\Http\Controllers\Test1Controller;
 use App\Http\Controllers\TestController;
@@ -38,3 +39,10 @@ Route::controller(Test1Controller::class)->prefix('/test')->name('test.')->group
 Route::get('/testcon',[UserController::class,'index']);
 // Test singel Action Controller using the command : php artisan make:controller SingleController --invokable 
 Route::get('/test/singlecon',SingleController::class);
+
+//Route rescources that has 7 function (index - create - store - show - upadte - edit - destroy )
+//-> except to remove index from route
+//->any show only in the any 
+ //Route::resource('posts', PostController::class)->only('index');
+ //Route::resource('posts', PostController::class)->only(['index' , 'show']);
+Route::resource('posts', PostController::class)->except('index');
