@@ -15,8 +15,11 @@ class UserController extends Controller
     public function testblade ()
     {
        // return view('users/index');
-       $data = '<h1>Mohamed Amr</h1>';
+       $data = 'Mohamed Amr';
+       $data2 = ['Ahmed' , 'ali'];
        // return view('users.index',['myuserdata' => $data]);
-        return view('users.index',compact('data'));
+        return view('users.index',compact('data' , 'data2'));
     }
+
+    
 }
