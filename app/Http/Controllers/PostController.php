@@ -9,10 +9,21 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         // use to display the data of all Posts like => Select * from Posts  
-        return view('post');
+       // dd($request->all());
+        //dd($request->input('name'));
+        //dd($request->query('name'));
+       // dd($request->only(['name','age']));
+       // return view('post');
+       $data = ['1','2','3'];
+    //    return response()->json([
+    //     'name' => "Mohamed Amr"
+    //    ]);
+
+    //abort(404);
+    return redirect()->route('login');
     }
 
     /**
