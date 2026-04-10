@@ -4,6 +4,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\SingleController;
 use App\Http\Controllers\Test1Controller;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\CheckIfNameIsAhmed;
 use Illuminate\Support\Facades\Route;
@@ -12,7 +13,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+/*
 Route::get('/test',function(){
    dd('Heeloo');
 });
@@ -48,3 +49,13 @@ Route::resource('posts', PostController::class);
 Route::get('testred',[Test1Controller::class,'test2'])->name('login');
 
 Route::get('/users/index', [UserController::class, 'testblade']);
+
+*/
+
+// Theme Route 
+
+Route::controller(ThemeController::class)->prefix('funi')->group(function(){
+    Route::get('/about' , 'about')->name('funi.about');
+    Route::get('/services' , 'services')->name('funi.services');
+    Route::get('/contact' , 'contact')->name('funi.contact');
+});
