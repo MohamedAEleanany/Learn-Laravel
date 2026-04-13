@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SingleController;
 use App\Http\Controllers\Test1Controller;
@@ -54,8 +55,12 @@ Route::get('/users/index', [UserController::class, 'testblade']);
 
 // Theme Route 
 
-Route::controller(ThemeController::class)->prefix('funi')->group(function(){
-    Route::get('/about' , 'about')->name('funi.about');
-    Route::get('/services' , 'services')->name('funi.services');
-    Route::get('/contact' , 'contact')->name('funi.contact');
+Route::controller(ThemeController::class)->prefix('funi')->name('funi.')->group(function(){
+    Route::get('/about' , 'about')->name('about');
+    Route::get('/services' , 'services')->name('services');
+    Route::get('/contact' , 'contact')->name('contact');
 });
+
+Route::get('/contact' ,[ContactController::class,'index'])->name('contact.index');
+Route::post('/contact/store', [ContactController::class , 'store'])->name('contact.store');
+Route::get('/home',[ContactController::class,'home']);
